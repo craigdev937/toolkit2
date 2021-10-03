@@ -5,8 +5,12 @@ import logger from "morgan";
 import cookieParser from "cookie-parser";
 import { trim } from "./middleware/trim";
 import { userRt } from "./routes/userRt";
+import { todoRt } from "./routes/todoRt";
+import { createConnection } from "typeorm";
 
 (async () => {
+    await createConnection();
+    console.log("PostgreSQL is now Connected!");
     const app: express.Application = express();
     app.use(helmet());
 
@@ -32,6 +36,7 @@ import { userRt } from "./routes/userRt";
 
     // Routes and Port
     app.use("/api", userRt);
+    app.use("/api", todoRt);
     const port = process.env.PORT || 9000;
     app.listen(port, () => {
         console.log(`Server: http://localhost:${port}`);
