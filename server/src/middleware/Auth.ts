@@ -19,7 +19,17 @@ async (req, res, next) => {
     }
 };
 
-
+// export const Auth: express.RequestHandler =
+// async (req, res, next) => {
+//     try {
+//         const user: Users | undefined = res.locals.user;
+//         if (!user) throw new Error("Unauthorized!");
+//         return next();
+//     } catch (error) {
+//         console.log(error);
+//         res.status(401).json({error: "Unauthorized!"});
+//     }
+// };
 
 
 

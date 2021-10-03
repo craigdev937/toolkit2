@@ -1,9 +1,12 @@
 import express from "express";
-import { CreateTodo } from "../controllers/todoCon";
+import { CreateTodo, DeleteTodo, 
+    FetchAllTodos } from "../controllers/todoCon";
 import { Auth } from "../middleware/Auth";
 
 export const todoRt: express.Router = express.Router();
-    todoRt.post("/", Auth, CreateTodo);
+    todoRt.post("/create", Auth, CreateTodo);
+    todoRt.get("/fetchall", Auth, FetchAllTodos);
+    todoRt.delete("/:id", Auth, DeleteTodo);
 
 
 
